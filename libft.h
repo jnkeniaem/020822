@@ -6,7 +6,7 @@
 /*   By: jeekim <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 12:00:20 by jeekim            #+#    #+#             */
-/*   Updated: 2022/02/08 16:17:14 by jeekim           ###   ########.fr       */
+/*   Updated: 2022/02/08 20:25:57 by jeanne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	ft_putchar(char c, int *cnt);
-void	ft_putstr(char *s);
+void	ft_putstr(char *s, int *cnt);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 t_list	*ft_lstnew(void *content);

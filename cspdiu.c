@@ -6,14 +6,14 @@
 //함수
 //
 
-int	printchar(const char **format, va_list ap)
+int	printchar(const char **format, va_list ap, int *cnt)
 {
 	if (**format)
 	{
 		if (**format == 'c')
-			return (c_bring_print(format, ap));
+			return (c_bring_print(format, ap, cnt));
 		else if (**format == 's')
-			return (s_bring_print(format, ap));
+			return (s_bring_print(format, ap, cnt));
 		else if 
 
 	else // 예) 고정인수가 "%" 인 경우

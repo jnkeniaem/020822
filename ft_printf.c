@@ -6,7 +6,7 @@
 /*   By: jeekim <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 17:44:04 by jeekim            #+#    #+#             */
-/*   Updated: 2022/02/08 16:33:24 by jeekim           ###   ########.fr       */
+/*   Updated: 2022/02/08 20:20:38 by jeanne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,41 +14,36 @@
 #include <stdarg.h>
 #include "libft.h"
 
-int	ft_putnbr_16_print(long long nbr)
+void	ft_putnbr_16_print(long long nbr, int *cnt)
 {
 	unsigned long	n;
 	char			a;
 	char			*base;
-	int	len;
 
-	len = 0;
 	base = "0123456789abcdef";
 	if (nbr < 0)
 	{
-		ft_putchar('-');
-		len++;
+		ft_putchar('-', cnt);
 		n = nbr * (-1);
 	}
 	else
 		n = nbr;
 	if (n >= 16)
-		ft_putnbr_16_print(n / 16);
+		ft_putnbr_16_print(n / 16, cnt);
 	a = base[n % 16];
-	ft_putchar(a);
-	len++;
-	return (len);
+	ft_putchar(a, cnt);
 }
-
+/*
 #include <stdio.h>
 
 int main()
 {
 	int cnt = 0;
 
-	cnt = ft_putnbr_16_print(-1);
+	ft_putnbr_16_print(100, &cnt);
 	printf("\n%d", cnt);
 }
-
+*/
 /*
 void	ft_putnbr_16_cap_print(long long nbr)
 {

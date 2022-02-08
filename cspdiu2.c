@@ -1,22 +1,22 @@
-int	c_bring_print(const char **format, va_list ap)
+#include "libft.h"
+
+int	c_bring_print(const char **format, va_list ap, int *cnt)
+	//- cnt 자료형이 "int" * 이게 맞나 ? size_t나 다른 큰 자료형으로 안해도 되나?
 {
-	ft_putchar_fd(va_arg(ap, int), 1);
+	ft_putchar(va_arg(ap, int), cnt);
 	(*format)++;
-	return (1);
+	return (*cnt);
 }
 
 
-int	s_bring_print(const char **format, va_list ap)
+int	s_bring_print(const char **format, va_list ap, int *cnt)
 {
-	char *str;
-
-	str = va_arg(ap, char *);
-	ft_putstr_fd(str, 1);
+	ft_putstr(va_arg(ap, char *), cnt);
 	(*format)++;
-	return (ft_strlen(str));
+	return (*cnt);
 }
 
-void	ft_putnbr_16_print_fd(long long nbr, int fd)
+void	ft_putnbr_16_print(long long nbr, int *cnt)
 {
 	unsigned long	n;
 	char			a;
@@ -25,26 +25,28 @@ void	ft_putnbr_16_print_fd(long long nbr, int fd)
 	base = "0123456789abcdef";
 	if (nbr < 0)
 	{
-		write(1, "-", 1);
+		ft_putchar('-', cnt);
 		n = nbr * (-1);
 	}
 	else
 		n = nbr;
 	if (n >= 16)
-		ft_putnbr_16_print_fd(n / 16, fd);
+		ft_putnbr_16_print(n / 16, cnt);
 	a = base[n % 16];
-	ft_putchar_fd(a, fd);
+	ft_putchar(a, cnt);
 }
 
-int	p_bring_print(const char **format, va_list ap)
+int	p_bring_print(const char **format, va_list ap, int *cnt)
 {
 	long long	l;
 
-	ft_putstr_fd("0x", 1);
+	ft_putstr("0x", cnt);
 	l = (long long)va_arg(ap, void *);
-	ft_putnbr_16_print_fd(l, 1);
+	ft_putnbr_16_print(l, cnt);
 	(*format)++;
-	//출력한거 갯수 어떻게 세지
-
+	//출력한거 갯수 어떻게 세지ㅇ
+	//^ 출력할때마다 cnt 올려주는 방법으로!
+	return (*cnt);
+}
 
 int x
