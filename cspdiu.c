@@ -14,7 +14,16 @@ int	printchar(const char **format, va_list ap, int *cnt)
 			return (c_bring_print(format, ap, cnt));
 		else if (**format == 's')
 			return (s_bring_print(format, ap, cnt));
-		else if 
+		else if (**format == 'p')
+			return (p_bring_print(format, ap, cnt));
+		else if (**format == 'x')
+			return (s_bring_print(format, ap, cnt));
+		else if (**format == 'X')
+			return (s_bring_print(format, ap, cnt));
+		else if (**format == 's')
+			return (s_bring_print(format, ap, cnt));
+		else if (**format == 's')
+			return (s_bring_print(format, ap, cnt));
 
 	else // 예) 고정인수가 "%" 인 경우
 		return (2);

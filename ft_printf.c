@@ -6,7 +6,7 @@
 /*   By: jeekim <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 17:44:04 by jeekim            #+#    #+#             */
-/*   Updated: 2022/02/08 20:20:38 by jeanne           ###   ########.fr       */
+/*   Updated: 2022/02/08 23:43:07 by jeanne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,9 @@ int ft_printf(const char * format, ...)
 			format++;//'%' 바로 다음꺼 가리켜
 			cnt += printchar(&format, ap) - 2;
 		}
+		//cs%
+		//pxXff
+		//diuff
 		//if (*format == 'c')
 			ft_putchar_cnt(va_arg(ap, int));
 		if (*format == 's')

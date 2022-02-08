@@ -1,21 +1,3 @@
-#include "libft.h"
-
-int	c_bring_print(const char **format, va_list ap, int *cnt)
-	//- cnt 자료형이 "int" * 이게 맞나 ? size_t나 다른 큰 자료형으로 안해도 되나?
-{
-	ft_putchar(va_arg(ap, int), cnt);
-	(*format)++;
-	return (*cnt);
-}
-
-
-int	s_bring_print(const char **format, va_list ap, int *cnt)
-{
-	ft_putstr(va_arg(ap, char *), cnt);
-	(*format)++;
-	return (*cnt);
-}
-
 void	ft_putnbr_16_print(long long nbr, int *cnt)
 {
 	unsigned long	n;
@@ -49,9 +31,37 @@ int	p_bring_print(const char **format, va_list ap, int *cnt)
 	return (*cnt);
 }
 
-int	x_bring_print(const cahr **format, va_list ap, int *cnt)
+int	x_bring_print(const char **format, va_list ap, int *cnt)
+// -"x"일때도 long long으로 해줘도 되나? 너무 낭비 아닌가?
 {
-	ft_putnbr_16_print(va_arg(ap, void *), cnt);
+	ft_putnbr_16_print(va_arg(ap, unsigned int), cnt);
+	(*format)++;
+	return (*cnt);
+}
+
+void	ft_putnbr_16_cap_print(long long nbr)
+{
+	unsigned long	n;
+	char			a;
+	char			*base;
+
+	base = "0123456789ABCDEF";
+	if (nbr < 0)
+	{
+		write(1, "-", 1);
+		n = nbr * (-1);
+	}
+	else
+		n = nbr;
+	if (n >= 16)
+		ft_putnbr_16_print(n / 16);
+	a = base[n % 16];
+	ft_putchar_cnt(a);
+}
+
+int	X_bring_print(const char **format, va_list ap, int *cnt)
+{
+	ft_putnbr_16_print(va_arg(ap, unsigned int), cnt);
 	(*format)++;
 	return (*cnt);
 }
